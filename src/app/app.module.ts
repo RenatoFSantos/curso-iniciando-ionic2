@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { GeneratedTestPage } from '../pages/generated-test/generated-test';
+import { ConnectionService } from '../providers/connection-service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { GeneratedTestPage } from '../pages/generated-test/generated-test';
     GeneratedTestPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp,{
+    IonicModule.forRoot(MyApp, [ConnectionService], {
     menuType: 'push',
     platforms: {
       ios: {
@@ -29,6 +30,7 @@ import { GeneratedTestPage } from '../pages/generated-test/generated-test';
     MenuTestPage,
     GeneratedTestPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+  ConnectionService]
 })
 export class AppModule {}
